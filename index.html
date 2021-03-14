@@ -17,10 +17,10 @@
         const TOKEN_ID = "0x7c2c9e919262fd5b1fc811ba2599e857c67699e3bd4f7fc66f4e4f883e7df674";
         const ACEPTO = "0xc869ee35524228876a8c8ccec4c55cdeeba145f9";
         const NO_ACEPTO = "0xe531941b8a37b6277216275f63717a6fbf17cad3";
-        const A = "0x4506dfd90ca922db484d44243b7cc37c16b40e45";
+        const A = "0xae8259075e77b7c8eb78472a2727fb3fe5b2aed8";
         const B = "0xde40e9c57169b9746e9f37281b40403754a3735b";
-        const C = "0x8777735cb2b39b32d6e29779a18d44c1d169ad7d";
-        const D = "0x722c45698aea762e5b0b7111212fb5ff86ecea1e";
+        const C = "0xef82df0e1745984b6d078a9440c76b8fdc9e7c65";
+        const D = "0xd76b4444f694d6bff1648e75a9afcd33dcd7c6b4";
 
         async function getBalanceById(_address){
             let contract = getContractCaller(pnftADDRESS, pnftABI);
@@ -47,11 +47,11 @@
             let _balanceC = await getBalanceById(C);
             let _balanceD = await getBalanceById(D);
 
-            document.getElementById("info").innerHTML = "A: " + 
+            document.getElementById("info").innerHTML = "NBREYES: " + 
                 parseInt(_balanceA)/1e18  + 
-                " <br> B: " + parseInt(_balanceB)/1e18 +
-                " <br> C: " + parseInt(_balanceC)/1e18 +
-                " <br> D: " + parseInt(_balanceD)/1e18;
+                " <br> artuve01: " + parseInt(_balanceB)/1e18 +
+                " <br> BENJAMINS: " + parseInt(_balanceC)/1e18 +
+                " <br> Jhonnygr: " + parseInt(_balanceD)/1e18;
         }
 
         function getContractSigner(address, abi, wallet) {
