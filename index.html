@@ -21,6 +21,31 @@
         const B = "0xde40e9c57169b9746e9f37281b40403754a3735b";
         const C = "0xef82df0e1745984b6d078a9440c76b8fdc9e7c65";
         const D = "0xd76b4444f694d6bff1648e75a9afcd33dcd7c6b4";
+        const SI = "0xd8d9120a54032c9bcfca124f2c19be54c1c24647";
+        const NO = "0x172ba3b2a1b41948093945d05d55280a0f3fa335";
+        const TOKEN1 = "0xba9957af63115c4C6cE71890423328D021eA28B5";
+        const TOKEN2 = "0xf2C589e0c20ccCEf346aF5DfE93313C544ED0284";
+        const TOKEN3 = "0x9f34d11D6257c0500bA25c2745fF2d3E9186712A";
+        const TOKEN4 = "0x422DDF7faeF6EAcf7Dd8fd06702E6CBCf9FC50de";
+        const TOKEN5 = "0x4bA1cA2132D7e46173ED22cDE79261ADBDa0fB53";
+        const TOKEN6 = "0xF214F17818959AF4564434D871bc50c005482e5C";
+        const TOKEN7 = "0xF6685B7f3881f829c880Dc9b14e254a2590E21e4";
+        const TOKENID1 = "0x83c40760bac449d4ac445b404ba4d4a52f305c08f8ff3770ae88c12e51e46156";
+        const TOKENID2 = "0x4ac18e1fbffeb088ada775c0baa6de03400732b1a77fa0517ecb8530465acbde";
+        const TOKENID3 = "0xacb99a613af784c1c9b05d5cab31d5c1bf297b106b3a85eda0041309cca0e5bc";
+        const TOKENID4 = "0x806f6d4a892bc69efe9f1d41a38cbb39bc1570dfa1a8b47daf1f31478644379c";
+        const TOKENID5 = "0xcf652e5146434bcbd08fdeadce47bb1cb94ee418905309894caa9a749c79382f";
+        const TOKENID6 = "0x9a1a8449d65491598a9d7cf7938571a592d5751ec686e27e01020ccb50a523ac";
+        const TOKENID7 = "0xf1b249376fd4593972e49beed7a6d2cb743860cf49a86e6dfa41d07610075f9b";
+        const TOKENSARRAY = [TOKEN1, TOKEN2, TOKEN3, TOKEN4, TOKEN5, TOKEN6, TOKEN7];
+        const IDARRAY = [TOKENID1, TOKENID2, TOKENID3, TOKENID4, TOKENID5, TOKENID6, TOKENID7];
+
+        async function getBalanceByIdIndex(_address, _index) {
+            let contract = getContractCaller(TOKENSARRAY[_index], pnftABI);
+            let _balance = await contract.balanceById(_address, IDARRAY[_index]);
+            console.log(_balance / 1e18)
+            return _balance;
+        }
 
         async function getBalanceById(_address){
             let contract = getContractCaller(pnftADDRESS, pnftABI);
@@ -40,7 +65,7 @@
                     " <br> NO ACEPTO: " + parseInt(_balanceNOACEPTO)/1e18;
         }*/
 
-        async function updateInfo() {
+        /*async function updateInfo() {
             document.getElementById("info").innerHTML = "Cargando...";
             let _balanceA = await getBalanceById(A);
             let _balanceB = await getBalanceById(B);
@@ -52,6 +77,41 @@
                 " <br> artuve01: " + parseInt(_balanceB)/1e18 +
                 " <br> BENJAMINS: " + parseInt(_balanceC)/1e18 +
                 " <br> Jhonnygr: " + parseInt(_balanceD)/1e18;
+        }*/
+
+        async function updateInfo() {
+            document.getElementById("info").innerHTML = "Cargando...";
+
+            let balSI1 = await getBalanceByIdIndex(SI, 0);
+            let balNO1 = await getBalanceByIdIndex(NO, 0);
+            let balSI2 = await getBalanceByIdIndex(SI, 1);
+            let balNO2 = await getBalanceByIdIndex(NO, 1);
+            let balSI3 = await getBalanceByIdIndex(SI, 2);
+            let balNO3 = await getBalanceByIdIndex(NO, 2);
+            let balSI4 = await getBalanceByIdIndex(SI, 3);
+            let balNO4 = await getBalanceByIdIndex(NO, 3);
+            let balSI5 = await getBalanceByIdIndex(SI, 4);
+            let balNO5 = await getBalanceByIdIndex(NO, 4);
+            let balSI6 = await getBalanceByIdIndex(SI, 5);
+            let balNO6 = await getBalanceByIdIndex(NO, 5);
+            let balSI7 = await getBalanceByIdIndex(SI, 6);
+            let balNO7 = await getBalanceByIdIndex(NO, 6);
+
+            document.getElementById("info").innerHTML = "Punto 1 (SI): " + 
+                parseInt(balSI1)/1e18  + 
+                " <br> Punto 1 (NO): " + parseInt(balNO1)/1e18 +
+                " <br> Punto 2 (SI): " + parseInt(balSI2)/1e18 +
+                " <br> Punto 2 (NO): " + parseInt(balNO2)/1e18 +
+                " <br> Punto 3 (SI): " + parseInt(balSI3)/1e18 +
+                " <br> Punto 3 (NO): " + parseInt(balNO3)/1e18 +
+                " <br> Punto 4 (SI): " + parseInt(balSI4)/1e18 +
+                " <br> Punto 4 (NO): " + parseInt(balNO4)/1e18 +
+                " <br> Punto 5 (SI): " + parseInt(balSI5)/1e18 +
+                " <br> Punto 5 (NO): " + parseInt(balNO5)/1e18 +
+                " <br> Punto 6 (SI): " + parseInt(balSI6)/1e18 +
+                " <br> Punto 6 (NO): " + parseInt(balNO6)/1e18 +
+                " <br> Punto 7 (SI): " + parseInt(balSI7)/1e18 +
+                " <br> Punto 7 (NO): " + parseInt(balNO7)/1e18;
         }
 
         function getContractSigner(address, abi, wallet) {
@@ -147,7 +207,7 @@
         <br>
         <br>
         <img src="https://pimarkets.io/assets/img/logo-positive.png" width="250" height="50">
-        <h3> -- Recuento 14/03/2021 --</h3>
+        <h3> -- Recuento 16/03/2021 --</h3>
         <br>
         <button class="myButton" onclick="updateInfo();">Actualizar</button>
         <br>
